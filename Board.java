@@ -33,7 +33,7 @@ public class Board extends JPanel {
         initBoard(parent);
     }
 
-    private void initBoard(Tetris parent) {
+    private void initBoard(Tetris parent) { 
 
         setFocusable(true);
         statusbar = parent.getStatusBar();
@@ -73,7 +73,9 @@ public class Board extends JPanel {
 
         if (isPaused) {
 
-            statusbar.setText("paused");
+            statusbar.setText("FREEZE");
+            statusbar.setHorizontalAlignment(JLabel.CENTER);
+            statusbar.setVerticalAlignment(JLabel.CENTER);
         } else {
 
             statusbar.setText(String.valueOf(numLinesRemoved));
