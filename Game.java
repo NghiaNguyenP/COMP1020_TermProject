@@ -1,5 +1,7 @@
 package COMP1020_TermProject;
 
+import java.io.FileWriter;
+import java.io.IOException;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -45,35 +47,15 @@ class Tetris extends JFrame{
 
 public class Game extends JFrame {
 
-    // private JLabel statusbar;
-    // private String username;
+    public String username;
 
-    // public Tetris() {
-    //     initUI();
-    // }
+    public void writeLeaderboard(String username) throws IOException{
+        FileWriter leaderboard = new FileWriter("leaderboard.txt");
+        leaderboard.write(username + " ");
+        leaderboard.close();
+    }
 
-    // private void initUI() {
-
-    //     statusbar = new JLabel(" 0");
-    //     add(statusbar, BorderLayout.SOUTH);
-
-    //     var board = new Board(this);
-    //     add(board);
-    //     board.start();
-
-    //     setTitle("Tetris");
-    //     setSize(400, 700);
-    //     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    //     setLocationRelativeTo(null);
-    // }
-
-    // JLabel getStatusBar() {
-
-    //     return statusbar;
-    // }
-    private String username;
-
-    public void initButton(){
+    public void initButton() throws IOException{
         JFrame f=new JFrame("Login");  
         final JTextField tf=new JTextField();  
         tf.setBounds(50,50, 150,20);  
@@ -96,7 +78,14 @@ public class Game extends JFrame {
                     System.out.println("Add Button is pressed");
                     username = tf.getText();
                     System.out.print(username);
-                    // b.dispose();
+                    try{
+                        FileWriter leaderboard = new FileWriter("leaderboard.txt");
+                        leaderboard.write(username + " ");
+                        System.out.println("WRITING USERNAME");
+                        leaderboard.close();
+                    } catch (IOException exc){
+                        System.out.println("An error occurred.");
+                    }
                     b.setVisible(false);
                     f.setVisible(false);
                     tf.setVisible(false);
@@ -113,14 +102,12 @@ public class Game extends JFrame {
         });
     }
 
-    public static void main(String[] args) {
-        // TODO: Save the score
-        Scanner sc = new Scanner(System.in);
-        // String player = sc.nextLine();
-        int score;
+    public static void main(String[] args) throws IOException {
+
 
         var login = new Game();
         login.initButton();
+
         // EventQueue.invokeLater(() -> {
         //     // var login = new Tetris();
         //     // login.initButton();

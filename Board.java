@@ -11,6 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Board extends JPanel {
 
@@ -27,6 +29,7 @@ public class Board extends JPanel {
     private JLabel statusbar;
     private Shape curPiece;
     private Tetrominoe[] board;
+
 
     public Board(Tetris parent) {
 
@@ -187,6 +190,16 @@ public class Board extends JPanel {
 
             var msg = String.format("Game over. Score: %d", numLinesRemoved);
             statusbar.setText(msg);
+            
+            try{
+                FileWriter leaderboard = new FileWriter("leaderboard.txt");
+                leaderboard.write(numLinesRemoved);
+                leaderboard.write("\n");
+                System.out.println("WRITING SCORE");
+                leaderboard.close();
+            }catch (IOException exc){
+                System.out.println("An error occurred.");
+            }
         }
     }
 
