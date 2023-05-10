@@ -1,5 +1,7 @@
 package COMP1020_TermProject;
 
+import COMP1020_TermProject.Leaderboard;
+
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -67,7 +69,11 @@ public class Game extends JFrame {
             }  
         });
 
-        f.add(b);f.add(tf);
+        JButton l=new JButton("SCORES");  
+        l.setBounds(50,100,95,30);
+
+
+        f.add(b);f.add(tf);f.add(l);
         f.setSize(400,400);  
         f.setLayout(null);  
         f.setVisible(true);
@@ -100,6 +106,15 @@ public class Game extends JFrame {
                 }
             }
         });
+
+        l.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                if (l.isEnabled()){
+                    // new Leaderboard(100);    
+                }
+            }
+        });
+
     }
 
     public static void main(String[] args) throws IOException {
