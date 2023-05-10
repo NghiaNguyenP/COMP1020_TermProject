@@ -1,7 +1,6 @@
 package COMP1020_TermProject;
 
 import COMP1020_TermProject.Shape.Tetrominoe;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -187,9 +186,6 @@ public class Board extends JPanel {
 
             curPiece.setShape(Tetrominoe.NoShape);
             timer.stop();
-
-            var msg = String.format("Game over. Score: %d", numLinesRemoved);
-            statusbar.setText(msg);
             
             try{
                 FileWriter leaderboard = new FileWriter("leaderboard.txt");
@@ -200,6 +196,9 @@ public class Board extends JPanel {
             }catch (IOException exc){
                 System.out.println("An error occurred.");
             }
+
+            var msg = String.format("Game over. Score: %d", numLinesRemoved);
+            statusbar.setText(msg);
         }
     }
 
