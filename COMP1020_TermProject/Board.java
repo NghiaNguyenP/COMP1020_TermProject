@@ -4,14 +4,18 @@ import COMP1020_TermProject.Shape.Tetrominoe;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
 import java.io.FileWriter;
 import java.io.IOException;
+
+import java.util.*;
 
 public class Board extends JPanel {
 
@@ -28,6 +32,7 @@ public class Board extends JPanel {
     private JLabel statusbar;
     private Shape curPiece;
     private Tetrominoe[] board;
+    private Queue queue;
 
 
     public Board(Tetris parent) {
@@ -229,6 +234,18 @@ public class Board extends JPanel {
         return true;
     }
 
+    // Implement the holding mechanism
+    private void holdQueue(Shape newPiece){
+        if (queue.isEmpty()){
+            queue.add(newPiece);
+            newPiece();
+        }
+        else{
+            curPiece = (Shape) queue.poll();
+        }
+
+    }
+
     private void removeFullLines() {
 
         int numFullLines = 0;
@@ -346,6 +363,7 @@ public class Board extends JPanel {
                 case KeyEvent.VK_UP -> tryMove(curPiece.rotateLeft(), curX, curY);
                 case KeyEvent.VK_SPACE -> dropDown();
                 case KeyEvent.VK_D -> oneLineDown();
+                case KeyEvent.VK_C -> holdQueue(curPiece);
             }
         }
     }

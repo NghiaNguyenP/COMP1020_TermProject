@@ -6,7 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Scanner;
-import java.io.PrintWriter; // Step 1
+import java.io.PrintWriter;
 import java.io.IOException;
 
 

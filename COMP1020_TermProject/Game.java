@@ -14,6 +14,8 @@ import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 
 
@@ -62,7 +64,7 @@ public class Game extends JFrame {
         final JTextField tf=new JTextField();  
         tf.setBounds(50,50, 150,20);  
         JButton b=new JButton("PLAY");  
-        b.setBounds(50,100,95,30);  
+        b.setBounds(50,100,100,30);  
         b.addActionListener(new ActionListener(){  
             public void actionPerformed(ActionEvent e){  
                 tf.setText("Enter username.");  
@@ -70,10 +72,12 @@ public class Game extends JFrame {
         });
 
         JButton l=new JButton("SCORES");  
-        l.setBounds(50,100,95,30);
+        l.setBounds(50,150,100,30);
 
+        JCheckBox s = new JCheckBox("SOUND");
+        s.setBounds(50,200,100,30);
 
-        f.add(b);f.add(tf);f.add(l);
+        f.add(b);f.add(tf);f.add(l);f.add(s);
         f.setSize(400,400);  
         f.setLayout(null);  
         f.setVisible(true);
