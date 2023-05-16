@@ -2,7 +2,7 @@ package COMP1020_TermProject;
 
 import COMP1020_TermProject.Shape.Tetrominoe;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.JPanel;  
 import javax.swing.Timer;
 
 import java.awt.Color;
@@ -11,7 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -32,7 +33,7 @@ public class Board extends JPanel {
     private JLabel statusbar;
     private Shape curPiece;
     private Tetrominoe[] board;
-    private Queue queue;
+    private ArrayList<Shape> queue = new ArrayList<Shape>();
 
 
     public Board(Tetris parent) {
@@ -193,8 +194,10 @@ public class Board extends JPanel {
             timer.stop();
             
             try{
-                FileWriter leaderboard = new FileWriter("leaderboard.txt");
-                leaderboard.write(numLinesRemoved);
+                File file = new File("leaderboard.txt");
+                FileWriter leaderboard = new FileWriter(file,true);
+                System.out.println(leaderboard);
+                leaderboard.write(String.valueOf(numLinesRemoved));
                 leaderboard.write("\n");
                 System.out.println("WRITING SCORE");
                 leaderboard.close();
@@ -236,12 +239,13 @@ public class Board extends JPanel {
 
     // Implement the holding mechanism
     private void holdQueue(Shape newPiece){
-        if (queue.isEmpty()){
+        System.out.println(queue.size());
+        if (queue.size() ==0){
             queue.add(newPiece);
             newPiece();
         }
         else{
-            curPiece = (Shape) queue.poll();
+            curPiece = (Shape) queue.remove(0);
         }
 
     }

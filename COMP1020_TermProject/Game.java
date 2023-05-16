@@ -2,6 +2,7 @@ package COMP1020_TermProject;
 
 import COMP1020_TermProject.Leaderboard;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -54,7 +55,8 @@ public class Game extends JFrame {
     public String username;
 
     public void writeLeaderboard(String username) throws IOException{
-        FileWriter leaderboard = new FileWriter("leaderboard.txt");
+        File file = new File("leaderboard.txt");
+        FileWriter leaderboard = new FileWriter(file, true);
         leaderboard.write(username + " ");
         leaderboard.close();
     }
