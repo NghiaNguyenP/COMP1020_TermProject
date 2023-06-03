@@ -211,6 +211,7 @@ public class Main extends JFrame {
                 if (jButton2.isEnabled()){
                     try {
                         new Window(1);
+                        f.setVisible(false);
                     } catch (IOException e1) {
                         // TODO Auto-generated catch block
                         e1.printStackTrace();
@@ -230,6 +231,7 @@ public class Main extends JFrame {
                 if (jButton1.isEnabled()){
                     try {
                         new Window(2);
+                        f.setVisible(false);
                     } catch (IOException e1) {
                         // TODO Auto-generated catch block
                         e1.printStackTrace();
@@ -252,6 +254,7 @@ public class Main extends JFrame {
                     GameLeaderboardGUI leaderboardGUI = new GameLeaderboardGUI();
                     leaderboardGUI.loadLeaderboardFromFile("leaderboard.txt");
                     leaderboardGUI.setVisible(true);
+                    f.setVisible(false);
                 }
             }
         });
