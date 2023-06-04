@@ -137,16 +137,16 @@ public class Main extends JFrame {
         //     public void actionPerformed(ActionEvent e){
         //         if (b.isEnabled()){
         //             System.out.println("Add Button is pressed");
-        //             username = tf.getText();
-        //             System.out.print(username);
-        //             try{
-        //                 FileWriter leaderboard = new FileWriter("leaderboard.txt", true);
-        //                 leaderboard.write(username + " ");
-        //                 System.out.println("WRITING USERNAME");
-        //                 leaderboard.close();
-        //             } catch (IOException exc){
-        //                 System.out.println("An error occurred.");
-        //             }
+                    // username = tf.getText();
+                    // System.out.print(username);
+                    // try{
+                    //     FileWriter leaderboard = new FileWriter("leaderboard.txt", true);
+                    //     leaderboard.write(username + " ");
+                    //     System.out.println("WRITING USERNAME");
+                    //     leaderboard.close();
+                    // } catch (IOException exc){
+                    //     System.out.println("An error occurred.");
+                    // }
         //             b.setVisible(false);
         //             f.setVisible(false);
         //             tf.setVisible(false);
@@ -183,6 +183,7 @@ public class Main extends JFrame {
         JButton jButton2 = new javax.swing.JButton();
         JButton jButton1 = new javax.swing.JButton();
         JButton jButton3 = new javax.swing.JButton();
+        JTextField jTextField1 = new javax.swing.JTextField();
         JLabel jLabel4 = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
@@ -194,13 +195,13 @@ public class Main extends JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("TETRIS");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(350, 50, 107, 48);
+        jLabel3.setBounds(350, 30, 107, 48);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("BE THE CHANGE TO CHANGE THE GAME");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(200, 110, 440, 40);
+        jLabel1.setBounds(200, 80, 440, 40);
 
         jButton2.setBackground(new java.awt.Color(0, 204, 255));
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -209,6 +210,15 @@ public class Main extends JFrame {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 if (jButton2.isEnabled()){
+                    username = jTextField1.getText();
+                    System.out.print(username);
+                    try{
+                        FileWriter leaderboard = new FileWriter("leaderboard.txt", true);
+                        leaderboard.write("\n" +username + " ");
+                        leaderboard.close();
+                    } catch (IOException exc){
+                        System.out.println("An error occurred.");
+                    }
                     try {
                         new Window(1);
                         f.setVisible(false);
@@ -220,7 +230,7 @@ public class Main extends JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(20, 170, 370, 100);
+        jButton2.setBounds(20, 200, 370, 100);
 
         jButton1.setBackground(new java.awt.Color(255, 255, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -229,6 +239,15 @@ public class Main extends JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 if (jButton1.isEnabled()){
+                    username = jTextField1.getText();
+                    System.out.print(username);
+                    try{
+                        FileWriter leaderboard = new FileWriter("leaderboard.txt", true);
+                        leaderboard.write("\n" +username + " ");
+                        leaderboard.close();
+                    } catch (IOException exc){
+                        System.out.println("An error occurred.");
+                    }
                     try {
                         new Window(2);
                         f.setVisible(false);
@@ -240,14 +259,14 @@ public class Main extends JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(20, 290, 370, 100);
+        jButton1.setBounds(20, 320, 370, 100);
 
         jButton3.setBackground(new java.awt.Color(102, 255, 0));
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon("leaderboard.png")); // NOI18N
         jButton3.setText("Leaderboard");
         getContentPane().add(jButton3);
-        jButton3.setBounds(420, 170, 360, 100);
+        jButton3.setBounds(420, 200, 360, 100);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 if (jButton3.isEnabled()){
@@ -259,11 +278,21 @@ public class Main extends JFrame {
             }
         });
 
+        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jTextField1.setText("Player Name");
+        // jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        //     public void actionPerformed(java.awt.event.ActionEvent evt) {
+        //         // jTextField1ActionPerformed(evt);
+        //     }
+        // });
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(330, 140, 150, 40);
+
         jLabel4.setIcon(new javax.swing.ImageIcon("tetris_background.jpg")); // NOI18N
         getContentPane().add(jLabel4);
         jLabel4.setBounds(-3, -4, 800, 460);
         
-        f.add(jLabel1);f.add(jLabel2);f.add(jLabel3);f.add(jLabel4);f.add(jButton1);f.add(jButton2);f.add(jButton3);
+        f.add(jLabel1);f.add(jLabel2);f.add(jLabel3);f.add(jLabel4);f.add(jButton1);f.add(jButton2);f.add(jButton3);f.add(jTextField1);
         f.setSize(800,480);  
         f.setLayout(null);  
         f.setVisible(true);

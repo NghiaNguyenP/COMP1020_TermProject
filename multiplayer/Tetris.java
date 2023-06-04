@@ -1,7 +1,9 @@
 import java.awt.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
-
-import TetrisPanel;
+import java.util.Queue;
 
 public class Tetris  {
 	// grid of color ids that stores what kind of block is where
@@ -133,7 +135,18 @@ public class Tetris  {
 							isGameOver = false;
 					}
 					if (isGameOver) {
-						System.out.println("GAMEOVER -- FINAL SCORE " + linesCleared);
+						try{
+							File file = new File("leaderboard.txt");
+							FileWriter leaderboard = new FileWriter(file,true);
+							System.out.println(leaderboard);
+							leaderboard.write(String.valueOf(linesCleared));
+							leaderboard.write("\n");
+							System.out.println("WRITING SCORE");
+							leaderboard.close();
+						}catch (IOException exc){
+							System.out.println("An error occurred.");
+						}
+						System.out.println("YOU LOSE AND YOUR SCORE IS" + linesCleared);
 						panel.setGameOver();
 					}
 					// set the piece down and allow the user to hold a piece. The lock time is also reset
